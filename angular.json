@@ -121,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "VeterinariaLissette"
+    }
+  },
+  "defaultProject": "VeterinariaLissette",
+  "cli": {
+    "analytics": false
+  }
 }
