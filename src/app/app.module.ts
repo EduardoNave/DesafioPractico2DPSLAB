@@ -23,6 +23,8 @@ import { AuthService } from "./services/auth.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { NewTicketComponent } from './components/new-ticket/new-ticket.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FormsModule } from '@angular/forms';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    TicketsComponent
+    TicketsComponent,
+    EditProfileComponent,
+    NewTicketComponent
   ],
   imports: [
     BrowserModule,

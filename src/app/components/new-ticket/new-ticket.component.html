@@ -1,23 +1,23 @@
 <!-- Top navigation -->
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <span class="redirect" routerLink="/lobby" style="cursor: pointer;">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0">
-    <img class="brand-logo" src="../assets/dog.png" alt="Logo" width="50px">
-    <span>&nbsp;&nbsp;Veterinaria Lissette</span>
-    </a>
-</span>
-</nav>
-
-<br><br><br>
-
-<!-- Sidebar navigation -->
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <br>
-        <ul class="nav flex-column">
-          <li class="nav-item">
+    <span class="redirect" routerLink="/lobby" style="cursor: pointer;">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0">
+        <img class="brand-logo" src="../assets/dog.png" alt="Logo" width="50px">
+        <span>&nbsp;&nbsp;Veterinaria Lissette</span>
+        </a>
+    </span>
+  </nav>
+  
+  <br><br><br>
+  
+  <!-- Sidebar navigation -->
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <br>
+          <ul class="nav flex-column">
+            <li class="nav-item">
                 <a class="nav-link active">
                     <span class="redirect" routerLink="/lobby" style="cursor: pointer; color: blue;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
@@ -47,47 +47,26 @@
                 </svg> Tickets</span>
             </a>
             </li>
-
-          <!-- Calling SignOut() Api from AuthService -->
-          <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              <i class="fas fa-sign-out-alt"></i> Salir
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    
-    <!-- Main content -->
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="inner-adjust">
-        <div class="pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Inicio</h1>
+  
+            <!-- Calling SignOut() Api from AuthService -->
+            <li class="nav-item">
+              <a class="nav-link" (click)="authService.SignOut()">
+                <i class="fas fa-sign-out-alt"></i>Salir
+              </a>
+            </li>
+          </ul>
         </div>
-
-        <!-- Show user data when logged in -->
-        <div class="row" *ngIf="authService.userData as user">
-          <div class="col-md-12">
-            <div class="media">
-              <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/user.jpg'}}" alt="{{user.displayName}}" width="150px">
-              <div class="media-body">
-                <h1>Bienvenid@: <strong>{{(user.displayName) ? user.displayName : 'Usuario Nuevo'}}</strong></h1>
-                <p *ngIf="user.emailVerified == true; else SinVerificar"><strong style="color:green; background-color: white;">Correo Verificado</strong></p>
-                  <ng-template #SinVerificar style="color: red;background-color: white;">Correo sin verificar</ng-template>
-                <p>User ID: <strong>{{user.uid}}</strong></p>
-                <p>Correo: <strong>{{user.email}}</strong></p>
-                <p> Información </p>
-                <p>DUI: <strong>{{user.dui}}</strong></p>
-                <p>Nombre de la mascota: <strong>{{user.petName}}</strong></p>
-                <p>Tratamiento realizado: <strong>{{user.tratamiento}}</strong></p>
-                <p>Medicamento aplicado: <strong>{{user.medicamento}}</strong></p>
-                <p>Costo visita: $<strong>{{user.costo}}</strong></p>
-                <p>Visitas anteriores: <strong>{{user.visitas}}</strong></p>
-              </div>
-            </div>
+      </nav>
+      
+      <!-- Main content -->
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="inner-adjust">
+          <div class="pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Nueva cita</h1>
           </div>
+  
+          
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </div>
-</div>

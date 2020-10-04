@@ -44,6 +44,7 @@ export class AuthService {
           this.router.navigate(['lobby']);
         });
         this.SetUserData(result.user);
+        this.toastr.success('Inicio de sesión exitoso', '¡Bienvenido!');
       }).catch((error) => {
        // window.alert("Por favor revisar credenciales")
          //window.alert(error.message)
@@ -111,7 +112,7 @@ export class AuthService {
     return this.afAuth.signInWithPopup(provider)
     .then((result) => {
        this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['lobby']);
         })
       this.SetUserData(result.user);
     }).catch((error) => {
@@ -131,12 +132,12 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
-      dui: user.dui,
-      petName: user.petName,
-      tratamiento: user.tratamiento,
-      medicamento: user.medicamento,
-      costo: user.costo,
-      visitas: user.visitas
+      dui: '00000000-0',
+      petName: 'No definido',
+      tratamiento: 'No definido',
+      medicamento: 'No definido',
+      costo: 0.00,
+      visitas: 0
     }
     return userRef.set(userData, {
       merge: true
