@@ -1,1 +1,41 @@
-<p>verify-email works!</p>
+<div class="container py-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card rounded-0">
+              <div class="card-header">
+                <h3 class="mb-0">¡Registro completado!</h3>
+              </div>
+              <div class="displayTable">
+                <div class="displayTableCell">
+              
+                  <div class="authBlock">
+              
+                    <div class="formGroup" *ngIf="authService.userData as user">
+                      <p class="text-center">Hemos enviado un correo a la dirección <strong>{{user.email}}</strong>.</p>
+                      <p class="text-center">Por favor verifique su bandeja de entrada para validar su cuenta.</p>
+                    </div>
+                    
+                    <!-- Calling SendVerificationMail() method using authService Api -->
+                    <div class="formGroup">
+                      <button type="button" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
+                        <i class="fas fa-redo-alt"></i>
+                        Reenviar correo de verificación
+                      </button>
+                    </div>
+              
+                  </div>
+              
+                  <div class="redirectToLogin">
+                    <span>Para ingresar<span class="redirect" routerLink="/sign-in" style="cursor: pointer; color: blue;"> haga clic aquí</span></span>
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

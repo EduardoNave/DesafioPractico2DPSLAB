@@ -1,1 +1,58 @@
-<p>sign-in works!</p>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card rounded-0">
+            <div class="card-header">
+              <h3 class="mb-0">Ingreso al Lobby</h3>
+            </div>
+            <div class="displayTable">
+              <div class="displayTableCell">
+                <div class="authBlock">
+                  <br>
+                  <div class="formGroup">
+                    <label>Correo: &nbsp;</label>
+                    <input type="email" class="formControl" placeholder="correo electrónico" #userName required>
+                    <span class="orInner left"> &nbsp;&nbsp; </span>
+                    <label>Contraseña: &nbsp;</label>
+                    <input type="password" class="formControl" placeholder="contraseña" #userPassword required>
+                  </div>
+                  <br>
+                  <div class="forgotPassword">
+                    <span routerLink="/forgot-password" style="cursor: help; color: blue">¡Ayuda! olvidé mi contraseña</span>
+                  </div>
+                  
+                  <br>
+
+                  <!-- Calling SignIn Api from AuthService -->
+                  <div class="form-group">
+                    <span class="orInner left"> &nbsp;&nbsp; </span>
+                    <button type="submit" class="btn btn-success btn-lg" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+                      Entrar
+                    </button>
+                    <span class="orInner left"> &nbsp; </span>
+                    <span class="or"><span class="orInner left">&nbsp; OR &nbsp;</span></span>
+                    <span class="orInner left"> &nbsp; </span>
+                    <!-- Calling GoogleAuth Api from AuthService -->
+                    <button type="button" class="btn btn-primary btn-lg" (click)="authService.GoogleAuth()">
+                      <i class="fab fa-google-plus-g"></i>
+                      Entrar con Google
+                    </button>
+                    <span class="orInner left"> &nbsp;&nbsp; </span>
+                  </div>
+                  <br>
+                </div>
+                <div class="redirectToLogin">
+                  <span>Si aún no tienes una cuenta <span class="redirect" routerLink="/register-user" style="cursor: pointer; color: blue;">Créala aquí</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/row-->
+    </div>
+    <!--/col-->
+  </div>
+</div>

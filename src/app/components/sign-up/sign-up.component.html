@@ -1,1 +1,57 @@
-<p>sign-up works!</p>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card rounded-0">
+            <div class="card-header">
+              <h3 class="mb-0">Crea tu cuenta</h3>
+            </div>
+            <div class="displayTable">
+              <div class="displayTableCell">
+                <div class="authBlock">
+                  <br>
+                  <div class="formGroup">
+                    <label>Correo: &nbsp;</label>
+                    <input type="email" class="formControl" placeholder="Correo electrónico" #userEmail required>
+                    <span class="orInner left"> &nbsp;&nbsp; </span>
+                    <label>Contraseña: &nbsp;</label>
+                    <input type="password" class="formControl" placeholder="Contraseña" #userPwd required>
+                  </div>
+                  <br>
+                  <div class="formGroup">
+                    <!-- Calling SignIn Api from AuthService -->
+                    <button type="button" class="btn btn-success btn-lg" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+                      Crear cuenta
+                    </button>
+
+                    <!-- OR -->
+                    <span class="orInner left"> &nbsp; </span>
+                    <span class="or"><span class="orInner left">&nbsp; OR &nbsp;</span></span>
+                    <span class="orInner left"> &nbsp; </span>
+
+                    <!-- Continue with Google -->
+                    <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+                      <i class="fab fa-google-plus-g"></i>
+                      Continue with Google
+                    </button>
+
+                    <!-- Continue with Facebook -->
+                    <button type="button" class="btn facebookBtn" (click)="authService.FacebookAuth()">
+                      <i class="fab fa-facebook"></i>
+                      Continue with Facebook
+                    </button>
+                  </div>
+                  <br>
+                  <div class="redirectToLogin">
+                    <span>Si ya tienes cuenta <span class="redirect" routerLink="/sign-in" style="cursor: pointer; color: blue;">Ingresa aquí</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

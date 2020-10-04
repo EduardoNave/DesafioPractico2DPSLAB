@@ -5,6 +5,9 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 
+// toastr
+import { ToastrService } from 'ngx-toastr';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +19,8 @@ export class AuthService {
     public afs: AngularFirestore,   //  Inyectar Servicio Firestore
     public afAuth: AngularFireAuth, // Inyectar el servicio de autenticación de Firebase
     public router: Router,  
-    public ngZone: NgZone // Servicio NgZone para eliminar la advertencia de alcance externo
+    public ngZone: NgZone, // Servicio NgZone para eliminar la advertencia de alcance externo
+    public toastr: ToastrService
   ) {    
 
     /* Guardar datos de usuario en almacenamiento local cuando
@@ -37,12 +41,13 @@ export class AuthService {
   SignIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password).then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['lobby']);
         });
         this.SetUserData(result.user);
       }).catch((error) => {
        // window.alert("Por favor revisar credenciales")
-         window.alert(error.message)
+         //window.alert(error.message)
+         this.toastr.error('Intente registrar un usuario nuevo', 'Usuario no encontrado');
       })
   }
 
@@ -54,8 +59,10 @@ export class AuthService {
         y vuelve la funcion*/
         this.SendVerificationMail();
         this.SetUserData(result.user);
+        this.toastr.success('Se ha enviado un correo para que verifique su cuenta', 'Usuario registrado');
       }).catch((error) => {
-        window.alert(error.message)
+        //window.alert(error.message)
+        this.toastr.error('Revise los datos ingresados', 'No se completó el registro');
       })
   }
 

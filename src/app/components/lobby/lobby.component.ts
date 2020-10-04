@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+//Service
+import { AuthService } from "../../services/auth.service";
+
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LobbyComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
