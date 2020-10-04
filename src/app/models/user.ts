@@ -8,6 +8,5 @@ export class User {
     petName: string;
     tratamiento: string;
     medicamento: string;
-    costo: number;
     visitas: number;
 }

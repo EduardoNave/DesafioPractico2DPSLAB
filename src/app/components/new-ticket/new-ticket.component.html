@@ -65,6 +65,63 @@
             <h1 class="h2">Nueva cita</h1>
           </div>
   
+          <div class="card mt-5">
+            <div class="card-body">
+
+                <!-- Cuando el evento onSubmit , suceda se va pasar todo el formulario 'productTicket' -->
+                <form #ticketForm="ngForm" (ngSubmit)="onSubmit(ticketForm)">
+
+                    <!-- TO UPDATE -->
+                    <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="ticketService.selectedTicket.$key">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="duiP" #duiP="ngModel"
+                            [(ngModel)]="ticketService.selectedTicket.duiP" placeholder="Dui del Propietario">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="petName" #petName="ngModel"
+                            [(ngModel)]="ticketService.selectedTicket.petName" placeholder="Nombre de la mascota">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="tratamiento" #tratamiento="ngModel"
+                            [(ngModel)]="ticketService.selectedTicket.tratamiento" placeholder="Tratamiento realizado">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="medicamento" #medicamento="ngModel"
+                            [(ngModel)]="ticketService.selectedTicket.medicamento" placeholder="Medicamento aplicado">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="number" class="form-control" name="costo" #costo="ngModel"
+                                [(ngModel)]="ticketService.selectedTicket.costo" placeholder="Costo de la visita">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="visita" #visita="ngModel"
+                                [(ngModel)]="ticketService.selectedTicket.visita" placeholder="Número de visita">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-plus-circle"></i> Agregar ticket
+                        </button>
+                        <button class="btn btn-secondary" type="reset" (click)="resetForm(ticketForm)">
+                            <i class="fas fa-sync-alt"></i> Reestablecer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
           
         </div>
       </main>

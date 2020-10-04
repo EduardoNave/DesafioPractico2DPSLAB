@@ -73,7 +73,7 @@
               <div class="media-body">
                 <h1>Bienvenid@: <strong>{{(user.displayName) ? user.displayName : 'Usuario Nuevo'}}</strong></h1>
                 <p *ngIf="user.emailVerified == true; else SinVerificar"><strong style="color:green; background-color: white;">Correo Verificado</strong></p>
-                  <ng-template #SinVerificar style="color: red;background-color: white;">Correo sin verificar</ng-template>
+                  <ng-template #SinVerificar><span style="color: red;background-color: white;">Correo sin verificar</span></ng-template>
                 <p>User ID: <strong>{{user.uid}}</strong></p>
                 <p>Correo: <strong>{{user.email}}</strong></p>
                 <p> Información </p>

@@ -136,7 +136,6 @@ export class AuthService {
       petName: 'No definido',
       tratamiento: 'No definido',
       medicamento: 'No definido',
-      costo: 0.00,
       visitas: 0
     }
     return userRef.set(userData, {
