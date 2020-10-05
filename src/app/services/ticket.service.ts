@@ -14,6 +14,7 @@ export class TicketService {
 
   // Traer los datos de firebase
   ticketList: AngularFireList<any>;
+  
 
   // Una variable temporal, para guardar los datos seleccionados, del tipo Ticket
   selectedTicket: Ticket = new Ticket();
@@ -33,9 +34,9 @@ export class TicketService {
     return this.ticketList = this.firebase.list("tickets", ref => ref.orderByChild('uid').equalTo(uid));
   }
 
-  obtenerVisitas(uid: string) {
+  misVisitas(uid: string) {
     //se filtra la lista para obtener únicamente los tickets realizados por el usuario activo
-    return this. ticketList = this.firebase.list("tickets", ref => ref.orderByChild('uid').equalTo(uid));
+    return this.ticketList = this.firebase.list("tickets", ref => ref.orderByChild('uid').equalTo(uid).limitToLast(1));
   }
 
 
@@ -49,7 +50,7 @@ export class TicketService {
       tratamiento: ticket.tratamiento,
       medicamento: ticket.medicamento,
       costo: ticket.costo,
-      visita: ticket.visita
+      visita: ticket.visita + 1
     });
   }
 

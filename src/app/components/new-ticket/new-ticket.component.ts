@@ -18,6 +18,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NewTicketComponent implements OnInit {
 
+  // Arreglo para almacenar la informacion que se obtenga de la base de datos de firebase
+  ticketList: Ticket[];
+
   constructor(
     public authService: AuthService,
     public ticketService: TicketService,
@@ -27,6 +30,17 @@ export class NewTicketComponent implements OnInit {
   ngOnInit(): void {
     //this.ticketService.getTickets();
     this.resetForm();
+  }
+
+  consultarVisitas(param: string){
+    return this.ticketService.misVisitas(param).snapshotChanges().subscribe(item => {
+      this.ticketList = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"] = element.key;
+        this.ticketList.push(x as Ticket);
+      });
+    });
   }
 
 
