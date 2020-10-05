@@ -25,7 +25,7 @@ export class NewTicketComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.ticketService.getTickets();
+    //this.ticketService.getTickets();
     this.resetForm();
   }
 

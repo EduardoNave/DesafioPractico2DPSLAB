@@ -85,20 +85,34 @@
             <h6 class="text-center">
               Tickets registrados
             </h6>
+            <button type="button" class="btn btn-primary btn-lg" *ngIf="authService.userData as user" (click)="refrescarLista(user.uid)">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-clockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+              </svg>
+              Mostrar mis Tickets
+            </button><br><br>
             <table class="table table-sm table-hover">
               <tbody>
+                <tr>
+                  <th>Ticket ID</th>
+                  <th>Propietario</th>
+                  <th>Nombre de la mascota</th>
+                  <th>Tratamiento<br>realizado</th>
+                  <th>Medicamento<br>aplicado</th>
+                  <th>Costo de<br>la visita</th>
+                  <th>Visitas<br>acumuladas</th>
+                  <th>Eliminar</th>
+                </tr>
                 <tr *ngFor="let ticket of ticketList">
                   <td>{{ticket.$key}}</td>
-                  <td>{{ticket.duiP}}</td>
+                  <td>{{ticket.propietario}}</td>
                   <td>{{ticket.petName}}</td>
                   <td>{{ticket.tratamiento}}</td>
                   <td>{{ticket.medicamento}}</td>
-                  <td>{{ticket.costo}}</td>
+                  <td>${{ticket.costo}}</td>
                   <td>{{ticket.visita}}</td>
                   <td>
-                    <a class="btn btn-secondary text-white" (click)="onEdit(ticket)">
-                      <i class="far fa-edit"></i>
-                    </a>
                     <a class="btn btn-danger text-white" (click)="onDelete(ticket.$key)">
                       <i class="fas fa-trash-alt"></i>
                     </a>
@@ -108,70 +122,6 @@
             </table>
           </div>
         </div>
-
-        <div *ngIf="!ticketService.selectedTicket as ticket">
-        <ng-template #Desplegar>
-        <div class="card mt-5" >          
-          <div class="card-body">
-
-              <!-- Cuando el evento onSubmit , suceda se va pasar todo el formulario 'productTicket' -->
-              <form #ticketForm="ngForm" (ngSubmit)="onSubmit(ticketForm)">
-
-                  <!-- TO UPDATE -->
-                  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="ticketService.selectedTicket.$key">
-
-                  <div class="form-group">
-                      <input type="text" class="form-control" name="duiP" #duiP="ngModel"
-                          [(ngModel)]="ticketService.selectedTicket.duiP" placeholder="Dui del Propietario">
-                  </div>
-
-                  <div class="form-group">
-                      <input type="text" class="form-control" name="petName" #petName="ngModel"
-                          [(ngModel)]="ticketService.selectedTicket.petName" placeholder="Nombre de la mascota">
-                  </div>
-
-                  <div class="form-group">
-                      <input type="text" class="form-control" name="tratamiento" #tratamiento="ngModel"
-                          [(ngModel)]="ticketService.selectedTicket.tratamiento" placeholder="Tratamiento realizado">
-                  </div>
-
-                  <div class="form-group">
-                      <input type="text" class="form-control" name="medicamento" #medicamento="ngModel"
-                          [(ngModel)]="ticketService.selectedTicket.medicamento" placeholder="Medicamento aplicado">
-                  </div>
-                  
-                  <div class="form-group">
-                      <div class="input-group">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text">$</span>
-                          </div>
-                          <input type="number" class="form-control" name="costo" #costo="ngModel"
-                              [(ngModel)]="ticketService.selectedTicket.costo" placeholder="Costo de la visita">
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                      <div class="input-group">
-                          <input type="number" class="form-control" name="visita" #visita="ngModel"
-                              [(ngModel)]="ticketService.selectedTicket.visita" placeholder="Número de visita">
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                      <button class="btn btn-primary" type="submit">
-                          <i class="fas fa-plus-circle"></i> Agregar ticket
-                      </button>
-                      <button class="btn btn-secondary" type="reset" (click)="resetForm(ticketForm)">
-                          <i class="fas fa-sync-alt"></i> Reestablecer
-                      </button>
-                  </div>
-              </form>
-          </div>
-        </div>
-      </ng-template>
-      </div>
-
-
       </div>
     </main>
   </div>

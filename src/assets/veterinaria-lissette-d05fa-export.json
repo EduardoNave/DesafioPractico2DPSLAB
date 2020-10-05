@@ -1,0 +1,31 @@
+{
+  "tickets" : {
+    "-MIrEY5VErmtZCIQj1YI" : {
+      "costo" : 25,
+      "medicamento" : "Antiséptico",
+      "petName" : "Mashy",
+      "propietario" : "Eduardo Nave",
+      "tratamiento" : "Curación",
+      "uid" : "MGDijdLmfIds8DhjwEwKWECgV1V2",
+      "visita" : 1
+    },
+    "-MIrEiKrG_exwQV3ZGXl" : {
+      "costo" : 4.35,
+      "medicamento" : "Inyección",
+      "petName" : "Mashy",
+      "propietario" : "Eduardo Nave",
+      "tratamiento" : "Vacuna Rabia",
+      "uid" : "MGDijdLmfIds8DhjwEwKWECgV1V2",
+      "visita" : 2
+    }
+  },
+  "users" : {
+    "MGDijdLmfIds8DhjwEwKWECgV1V2" : {
+      "dui" : "05655046-9",
+      "email" : "Eduardo Nave",
+      "petName" : "Mashy",
+      "photoURL" : "https://lh3.googleusercontent.com/a-/AOh14GjDdxsCntZvywrjR9NRRTq5hlQ8ZCVC4O5UlhiWug",
+      "visitas" : 0
+    }
+  }
+}

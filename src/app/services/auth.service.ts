@@ -134,8 +134,6 @@ export class AuthService {
       emailVerified: user.emailVerified,
       dui: '00000000-0',
       petName: 'No definido',
-      tratamiento: 'No definido',
-      medicamento: 'No definido',
       visitas: 0
     }
     return userRef.set(userData, {

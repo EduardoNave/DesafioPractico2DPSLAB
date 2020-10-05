@@ -6,7 +6,5 @@ export class User {
     emailVerified: boolean;
     dui: string;
     petName: string;
-    tratamiento: string;
-    medicamento: string;
     visitas: number;
 }

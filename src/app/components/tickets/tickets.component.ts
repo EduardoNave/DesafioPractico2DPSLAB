@@ -20,6 +20,7 @@ export class TicketsComponent implements OnInit {
 
   // Arreglo para almacenar la informacion que se obtenga de la base de datos de firebase
   ticketList: Ticket[];
+  
 
   constructor(
     public authService: AuthService,
@@ -27,6 +28,7 @@ export class TicketsComponent implements OnInit {
     public toastr: ToastrService
   ) { }
 
+  
   /* 
     Cuando cargue la aplicación, que reciba toda la información con el método 'getProducts' del servicio de firebase
      pero ademas que utilice el metodo 'snapshotChanges' para estar atento a los cambios que tengas los datos en la
@@ -43,23 +45,34 @@ export class TicketsComponent implements OnInit {
      this.ticketList.push(x as Product);
 */
   ngOnInit() {
-    return this.ticketService.getTickets()
-      .snapshotChanges().subscribe(item => {
-        this.ticketList = [];
-        item.forEach(element => {
-          let x = element.payload.toJSON();
-          x["$key"] = element.key;
-          this.ticketList.push(x as Ticket);
-        });
+    return this.ticketService.getTickets().snapshotChanges().subscribe(item => {
+      this.ticketList = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"] = element.key;
+        this.ticketList.push(x as Ticket);
       });
+    });
+
   }
 
   /* 
-   Recibe una varible de tipo 'Product' para invocar el servicio de firebase, para actualizarlo
+   Recibe una varible de tipo 'Ticket' para invocar el servicio de firebase, para actualizarlo
    Para no ocupar el doble enlace de datos ' [(ngModel)]' , se va utilizar 'Object.assign({}, product)'  
   */
   onEdit(ticket: Ticket) {
     this.ticketService.selectedTicket = Object.assign({}, ticket);
+  }
+
+  refrescarLista(param: string){
+    return this.ticketService.misTickets(param).snapshotChanges().subscribe(item => {
+      this.ticketList = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"] = element.key;
+        this.ticketList.push(x as Ticket);
+      });
+    });
   }
 
   /* 

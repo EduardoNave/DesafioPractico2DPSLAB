@@ -1,6 +1,7 @@
 export class Ticket {
     $key: string;
-    duiP: string;
+    uid: string;
+    propietario: string;
     petName: string;
     tratamiento: string;
     medicamento: string;

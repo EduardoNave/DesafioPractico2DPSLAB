@@ -78,10 +78,7 @@
                 <p>Correo: <strong>{{user.email}}</strong></p>
                 <p> Información </p>
                 <p>DUI: <strong>{{user.dui}}</strong></p>
-                <p>Nombre de la mascota: <strong>{{user.petName}}</strong></p>
-                <p>Tratamiento realizado: <strong>{{user.tratamiento}}</strong></p>
-                <p>Medicamento aplicado: <strong>{{user.medicamento}}</strong></p>
-                <p>Costo visita: $<strong>{{user.costo}}</strong></p>
+                <p>Nombre de la mascota: <strong *ngIf="userService.selectedUser as userDB"> {{(userDB.petName) ? user.petName : "No definido"}}</strong></p>
                 <p>Visitas anteriores: <strong>{{user.visitas}}</strong></p>
               </div>
             </div>
