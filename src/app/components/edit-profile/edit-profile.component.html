@@ -121,10 +121,10 @@
                   [(ngModel)]="userService.selectedUser.petName" placeholder="Nombre de la mascota">
               </div>
 
-              <div class="form-group">
+              <div class="form-group" *ngFor="let user of userList">
                 <div class="input-group">
-                  <input type="number" class="form-control" name="visitas" #visitas="ngModel" [(ngModel)]="user.visitas"
-                    placeholder="Visitas">
+                  <input type="number" class="form-control" name="visitas" #visitas="ngModel" 
+                  [(ngModel)]="user.visitas" placeholder="Visitas">
                 </div>
               </div>
 

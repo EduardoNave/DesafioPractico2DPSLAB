@@ -18,6 +18,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditProfileComponent implements OnInit {
 
+  userList: User[];
+
   constructor(
     public authService: AuthService,
     public userService: UserService,
@@ -27,6 +29,11 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
     //this.userService.getUsers();
     this.resetForm();
+  }
+
+
+  obtenerVisitas(param: string){
+    
   }
 
   // Recibe un formulario del tipo NgForm, lo envia a guardar o actualizar , invocando el servicio Firebase

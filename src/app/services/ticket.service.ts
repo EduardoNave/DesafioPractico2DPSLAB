@@ -33,6 +33,11 @@ export class TicketService {
     return this.ticketList = this.firebase.list("tickets", ref => ref.orderByChild('uid').equalTo(uid));
   }
 
+  obtenerVisitas(uid: string) {
+    //se filtra la lista para obtener únicamente los tickets realizados por el usuario activo
+    return this. ticketList = this.firebase.list("tickets", ref => ref.orderByChild('uid').equalTo(uid));
+  }
+
 
   // crear un nuevo ticket  , recibiendo un parametro de tipo ticket
   insertTicket(ticket: Ticket) {
