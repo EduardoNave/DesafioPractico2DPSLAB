@@ -97,11 +97,12 @@
                 <tr>
                   <th>Ticket ID</th>
                   <th>Propietario</th>
-                  <th>Nombre de la mascota</th>
+                  <th>Nombre de<br> la mascota</th>
                   <th>Tratamiento<br>realizado</th>
                   <th>Medicamento<br>aplicado</th>
                   <th>Costo de<br>la visita</th>
                   <th>Visitas<br>acumuladas</th>
+                  <th></th>
                   <th>Eliminar</th>
                 </tr>
                 <tr *ngFor="let ticket of ticketList">
@@ -111,6 +112,7 @@
                   <td>{{ticket.tratamiento}}</td>
                   <td>{{ticket.medicamento}}</td>
                   <td>${{ticket.costo}}</td>
+                  <td>{{ticket.descuentoAplicado}}</td>
                   <td>{{ticket.visita}}</td>
                   <td>
                     <a class="btn btn-danger text-white" (click)="onDelete(ticket.$key)">

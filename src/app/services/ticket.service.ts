@@ -19,6 +19,8 @@ export class TicketService {
   // Una variable temporal, para guardar los datos seleccionados, del tipo Ticket
   selectedTicket: Ticket = new Ticket();
 
+  descuento: number;
+  descuentoAplicado: string;
 
 
   constructor(private firebase: AngularFireDatabase) { }
@@ -49,9 +51,43 @@ export class TicketService {
       petName: ticket.petName,
       tratamiento: ticket.tratamiento,
       medicamento: ticket.medicamento,
-      costo: ticket.costo,
-      visita: ticket.visita + 1
+      visita: ticket.visita + 1,
+      descuento: this.obtenerDescuento(ticket.visita.valueOf()),
+      descuentoAplicado: this.tipoDescuento(ticket.visita).toString(),
+      costo: ticket.costo*this.descuento
     });
+  }
+
+  validarVisita(ticket: Ticket){
+    if (ticket.visita = null) {
+      return 1;
+    } else {
+      return ticket.visita =+ 1;
+    }
+  }
+
+  tipoDescuento(visita: number){
+    if (visita == 2) {
+      return this.descuentoAplicado = "Descuento del 2%";
+    } else {
+      if (visita >= 5) {
+        return this.descuentoAplicado = "Descuento del 8%";
+      } else {
+        return this.descuentoAplicado = "";
+      }
+    }
+  }
+
+  obtenerDescuento(visita: number){
+    if (visita == 2) {
+      return this.descuento = 0.95;
+    } else {
+      if (visita >= 5) {
+        return this.descuento = 0.92;
+      } else {
+        return this.descuento = 1;
+      }
+    }
   }
 
   // Actualiza un ticket, recibiendo un parametro de tipo ticket

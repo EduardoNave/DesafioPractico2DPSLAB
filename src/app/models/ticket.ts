@@ -7,4 +7,6 @@ export class Ticket {
     medicamento: string;
     costo: number;
     visita: number;
+    descuento: number;
+    descuentoAplicado: string;
 }
