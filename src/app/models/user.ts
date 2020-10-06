@@ -1,4 +1,5 @@
 export class User {
+    $key: string;
     uid: string;
     email: string;
     displayName: string;
@@ -6,5 +7,4 @@ export class User {
     emailVerified: boolean;
     dui: string;
     petName: string;
-    visitas: number;
 }

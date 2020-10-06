@@ -89,45 +89,40 @@
 
         <div class="card mt-5" *ngIf="authService.userData as user">
           <div class="card-body">
-
             <!-- Cuando el evento onSubmit , suceda se va pasar todo el formulario 'productuser' -->
             <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-
               <!-- TO UPDATE -->
-              <input type="hidden" name="uid" #uid="ngModel" [(ngModel)]="user.uid">
-
+              <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="userService.selectedUser.$key">
               <div class="form-group">
-                <input type="text" class="form-control" name="displayName" #displayName="ngModel"
-                  [(ngModel)]="user.displayName" placeholder="Nombre">
+                <input type="text" class="form-control" name="uid" #uid="ngModel" readonly 
+                [(ngModel)]="user.uid" placeholder="User ID">
               </div>
-
               <div class="form-group">
-                <input type="text" class="form-control" name="dui" #dui="ngModel" maxlength="10"
-                  [(ngModel)]="userService.selectedUser.dui" placeholder="Número de DUI">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="displayName" #displayName="ngModel"
+                    [(ngModel)]="user.displayName" placeholder="Nombre de usuario">
+                </div>
               </div>
-
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="dui" #dui="ngModel"
+                    [(ngModel)]="userService.selectedUser.dui" placeholder="Número de DUI">
+                </div>
+              </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="email" #email="ngModel" [(ngModel)]="user.email"
                   placeholder="Correo electrónico">
               </div>
-
               <div class="form-group">
                 <input type="text" class="form-control" name="photoURL" #photoURL="ngModel" [(ngModel)]="user.photoURL"
                   placeholder="Photo URL">
               </div>
-
               <div class="form-group">
-                <input type="text" class="form-control" name="petName" #petName="ngModel"
-                  [(ngModel)]="userService.selectedUser.petName" placeholder="Nombre de la mascota">
-              </div>
-
-              <div class="form-group" *ngFor="let user of userList">
                 <div class="input-group">
-                  <input type="number" class="form-control" name="visitas" #visitas="ngModel" 
-                  [(ngModel)]="user.visitas" placeholder="Visitas">
+                  <input type="text" class="form-control" name="petName" #petName="ngModel"
+                    [(ngModel)]="userService.selectedUser.petName" placeholder="Nombre de la mascota">
                 </div>
               </div>
-
               <div class="form-group">
                 <button class="btn btn-primary" type="submit">
                   <i class="fas fa-plus-circle"></i> Guardar
@@ -139,10 +134,9 @@
             </form>
           </div>
         </div>
-
-        <!-- blank content -->
-
       </div>
+
+      <!-- blank content -->
     </main>
   </div>
 </div>

@@ -76,10 +76,15 @@
                   <ng-template #SinVerificar><span style="color: red;background-color: white;">Correo sin verificar</span></ng-template>
                 <p>User ID: <strong>{{user.uid}}</strong></p>
                 <p>Correo: <strong>{{user.email}}</strong></p>
-                <p> Información </p>
-                <p>DUI: <strong>{{user.dui}}</strong></p>
-                <p>Nombre de la mascota: <strong *ngIf="userService.selectedUser as userDB"> {{(userDB.petName) ? user.petName : "No definido"}}</strong></p>
-                <p>Visitas anteriores: <strong>{{user.visitas}}</strong></p>
+                <hr>
+                <p><strong>Información del usuario</strong></p>
+                <hr>
+                <div *ngIf="mostrarInfo(user.uid)">
+                  <div *ngFor="let userA of userList">
+                    <p>Número de DUI: <strong> {{userA.dui}} </strong></p>
+                    <p>Mascota: <strong> {{userA.petName}} </strong></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

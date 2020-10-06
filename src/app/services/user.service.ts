@@ -20,20 +20,26 @@ export class UserService {
   constructor(public firebase: AngularFireDatabase) { }
 
   // Traer todos los productos desde firebase 
-  getUsers(duiUser: string) { 
+  getUsers() {
     //se filtra la lista para obtener únicamente los tickets realizados por el usuario activo
-   return this.userList = this.firebase.list("users", ref => ref.orderByChild('dui').equalTo(duiUser));
-   }
+    return this.userList = this.firebase.list("users");
+  }
+
+  getUser(uid: string) {
+    //se filtra la lista para obtener únicamente los tickets realizados por el usuario activo
+    return this.userList = this.firebase.list("users", ref => ref.orderByChild("uid").equalTo(uid).limitToFirst(1));
+  }
 
   // crear un nuevo user  , recibiendo un parametro de tipo user
   insertUser(user: User) {
     // agregar un dato al final de la lista, como recibe un objeto del tipo user , puede acceder a sus propiedades
     this.userList.push({
-      email: user.displayName,
-      photoURL: user.photoURL,
+      uid: user.uid,
+      displayName: user.displayName,
       dui: user.dui,
-      petName: user.petName,
-      visitas: user.visitas
+      email: user.email,
+      photoURL: user.photoURL,
+      petName: user.petName
     });
   }
 
@@ -44,8 +50,7 @@ export class UserService {
       email: user.displayName,
       photoURL: user.photoURL,
       dui: user.dui,
-      petName: user.petName,
-      visitas: user.visitas
+      petName: user.petName
     });
   }
 

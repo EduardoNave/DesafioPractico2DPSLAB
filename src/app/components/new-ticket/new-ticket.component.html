@@ -118,6 +118,11 @@
                   [(ngModel)]="user.displayName">
               </div>
 
+              <div class="form-group">
+                <input type="hidden" class="form-control" name="propietario" #propietario="ngModel"
+                  [(ngModel)]="user.displayName">
+              </div>
+
               <div class="form-group" >
                 <input type="text" class="form-control" name="petName" #petName="ngModel"
                   [(ngModel)]="ticketService.selectedTicket.petName" placeholder="Nombre de la mascota">

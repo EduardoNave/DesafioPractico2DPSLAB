@@ -18,7 +18,6 @@ export class LobbyComponent implements OnInit {
 
   userList: User[];
 
-  dui: "";
 
   constructor(
     public authService: AuthService,
@@ -27,17 +26,27 @@ export class LobbyComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-      return this.userService.getUsers(this.dui)
+     /*  return this.userService.getUsers()
         .snapshotChanges().subscribe(item => {
           this.userList = [];
           item.forEach(element => {
             let x = element.payload.toJSON();
-            x["$uid"] = element.key;
+            x["$key"] = element.key;
             this.userList.push(x as User);
           });
-        });
+        }); */
     }
 
+    mostrarInfo(param: string){
+      return this.userService.getUser(param).snapshotChanges().subscribe(item => {
+        this.userList = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          x["$key"] = element.key;
+          this.userList.push(x as User);
+        });
+      });
+    }
     
 
 }

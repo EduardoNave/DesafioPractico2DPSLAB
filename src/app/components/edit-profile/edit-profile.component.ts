@@ -39,7 +39,7 @@ export class EditProfileComponent implements OnInit {
   // Recibe un formulario del tipo NgForm, lo envia a guardar o actualizar , invocando el servicio Firebase
   // lo termina limpiando resetForm
   onSubmit(userForm: NgForm) {
-    if (userForm.value.uid == null)
+    if (userForm.value.$key == null)
       this.userService.insertUser(userForm.value);
     else
       this.userService.updateUser(userForm.value);
@@ -53,6 +53,17 @@ export class EditProfileComponent implements OnInit {
     if (userForm != null)
       userForm.reset();
     this.userService.selectedUser = new User();
+  }
+
+  mostrarInfo(param: string){
+    return this.userService.getUser(param).snapshotChanges().subscribe(item => {
+      this.userList = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"] = element.key;
+        this.userList.push(x as User);
+      });
+    });
   }
 
 }
