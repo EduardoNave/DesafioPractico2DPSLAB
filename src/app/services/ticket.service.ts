@@ -38,7 +38,12 @@ export class TicketService {
 
   misVisitas(uid: string) {
     //se filtra la lista para obtener únicamente los tickets realizados por el usuario activo
-    return this.ticketList = this.firebase.list("tickets", ref => ref.orderByChild('uid').equalTo(uid).limitToLast(1));
+    this.ticketList = this.firebase.list("tickets", ref => ref.orderByChild('uid').equalTo(uid).limitToLast(1));
+    if (!this.ticketList) {
+      return this.ticketList = this.firebase.list("tickets", ref => ref.orderByChild('uid').limitToFirst(1));
+    } else {
+      return this.ticketList = this.firebase.list("tickets", ref => ref.orderByChild('uid').equalTo(uid).limitToLast(1));
+    }
   }
 
 

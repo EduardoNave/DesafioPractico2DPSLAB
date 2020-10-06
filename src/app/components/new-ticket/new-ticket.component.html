@@ -145,7 +145,7 @@
 
               <div class="form-group" *ngFor="let visitas of ticketList">
                 <div class="input-group">
-                  <input type="number" class="form-control" name="visita" #visita="ngModel" min="0" readonly
+                  <input type="number" class="form-control" name="visita" #visita="ngModel" min="1" readonly
                     [(ngModel)]="visitas.visita" placeholder="Número de visita">
                 </div>
               </div>
