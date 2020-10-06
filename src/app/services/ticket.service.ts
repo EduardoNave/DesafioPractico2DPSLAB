@@ -72,7 +72,7 @@ export class TicketService {
   }
 
   tipoDescuento(visita: number){
-    if (visita == 2) {
+    if (visita == 1) {
       return this.descuentoAplicado = "Descuento del 2%";
     } else {
       if (visita >= 5) {
@@ -84,7 +84,7 @@ export class TicketService {
   }
 
   obtenerDescuento(visita: number){
-    if (visita == 2) {
+    if (visita == 1) {
       return this.descuento = 0.95;
     } else {
       if (visita >= 5) {
