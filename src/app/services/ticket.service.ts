@@ -75,7 +75,7 @@ export class TicketService {
     if (visita == 1) {
       return this.descuentoAplicado = "Descuento del 2%";
     } else {
-      if (visita >= 5) {
+      if (visita > 4 || visita == 4) {
         return this.descuentoAplicado = "Descuento del 8%";
       } else {
         return this.descuentoAplicado = "";
@@ -87,7 +87,7 @@ export class TicketService {
     if (visita == 1) {
       return this.descuento = 0.95;
     } else {
-      if (visita >= 5) {
+      if (visita >= 4) {
         return this.descuento = 0.92;
       } else {
         return this.descuento = 1;
